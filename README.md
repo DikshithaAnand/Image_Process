@@ -37,7 +37,7 @@ To improve real-world reliability, the application includes **confidence-based u
 ---
 
 ## 🏗️ System Architecture
-
+```text
 User Uploads Image
 ↓
 Streamlit Frontend (frontend/app.py)
@@ -51,3 +51,145 @@ Custom CNN Classification Layer
 Softmax Output (Probabilities)
 ↓
 Prediction + Confidence / Unknown Handling
+```
+
+---
+
+## 📁 Project Folder Structure
+
+```text
+Image_Tagging_Project/
+├── dataset/
+│   ├── cat/
+│   │   ├── cat1.jpg
+│   │   ├── cat2.jpg
+│   │   └── ...
+│   └── dog/
+│       ├── dog1.jpg
+│       ├── dog2.jpg
+│       └── ...
+├── model/
+│   └── image_tagger.h5
+├── frontend/
+│   └── app.py
+├── train.py
+├── predict.py
+├── requirements.txt
+├── .gitignore
+└── README.md
+```
+
+
+---
+
+## ⚙️ How the System Works
+
+1. Images are stored in folders where each folder name represents a class label.
+2. Images are resized to **128 × 128** pixels and normalized.
+3. MobileNetV2 extracts high-level image features.
+4. A custom dense layer predicts the image class.
+5. The Streamlit frontend allows users to upload images.
+6. The model outputs prediction probabilities using Softmax.
+7. If confidence is below a defined threshold, the image is classified as **Unknown**.
+
+---
+
+## 🧪 Model Details
+
+- **Model Type:** Convolutional Neural Network (CNN)
+- **Learning Approach:** Transfer Learning
+- **Base Model:** MobileNetV2 (pre-trained on ImageNet)
+- **Input Shape:** 128 × 128 × 3
+- **Optimizer:** Adam
+- **Loss Function:** Categorical Crossentropy
+- **Epochs:** 3 (CPU-friendly training)
+
+---
+
+## 🖥️ Frontend Features
+
+- Upload image via browser
+- Display uploaded image
+- Predict image category
+- Show confidence percentage
+- Handle unknown images gracefully
+- Simple and user-friendly interface
+
+---
+
+## 🚀 How to Run the Project
+
+### 1️⃣ Install Dependencies
+```bash
+pip install -r requirements.txt
+```
+
+### 2️⃣ Train the Model
+```bash
+python train.py
+```
+
+## This will generate:
+
+model/image_tagger.h5
+### 3️⃣ Run the Frontend Application
+```bash
+cd frontend
+streamlit run app.py
+```
+
+Open in browser:
+```bash
+http://localhost:8501
+```
+
+### ⚠️ Unknown Image Handling
+
+If the prediction confidence is below 70%, the system displays:
+```bash
+⚠️ Unknown object (not cat or dog)
+```
+
+### 📊 Sample Output
+```bash
+Prediction: CAT
+Confidence: 95.91%
+```
+## OR 
+
+```bash
+Unknown object (not cat or dog)
+Confidence was only 48.20%
+```
+## 📈 Future Enhancements
+
+- Add more image classes (human, car, animal types)
+- Implement multi-label image tagging
+- Deploy using Flask or FastAPI
+- Add cloud deployment (AWS / GCP)
+- Improve UI with custom CSS
+- Integrate real-time camera input
+
+---
+
+## 🎓 Learning Outcomes
+
+- Understanding of CNNs and transfer learning
+- Practical experience with TensorFlow & Keras
+- Frontend integration using Streamlit
+- Real-world handling of unknown data
+- GitHub project structuring and version control
+
+---
+
+## 📜 License
+
+This project is developed for **educational purposes** and is free to use for learning and experimentation.
+
+---
+
+## 👤 Author
+
+**Dikshitha A**  
+Aspiring Software Engineer | AI & ML Enthusiast
+
